@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper{
+    height: 100vh;
+    overflow-x: hidden;      /* x me content move nhi hoga*/
+    overflow-y: auto;         /* y me content move krana h, either scroll or auto*/
+}
+
+.container{
+    height: 100%;
+    max-width: 1200px;    /* can do only width also*/
+    margin: 0 auto;       /*shorthand notation of margin */
+    padding: 20px;
+}
+
+.container h1{
+    margin: 20px;
+    text-align: center;    /* text ko center me laane k liye*/
+    margin-bottom: 20px;
+    font-size: 3rem;     /* for text size*/
+}
+
+.gallery{
+    display: flex;       /*images ko horizontal laane k liye*/
+    flex-wrap: wrap;       /* so that image next rows me aa jaaye*/
+    justify-content: space-around;   
+}
+
+.card{
+    width: 32%;    /* only 3 images in 1 row*/
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;   /* hide the overflow portion*/
+}
+
+.card img{
+    height: 100%;   /* to bring the box in squaris form*/
+    width: 100%;    /* to bring the box size in order*/
+    filter:grayscale(100%);   /* image is b/w in starting*/
+    box-shadow: 0 0 20px #333;  
+    object-fit: cover;   /*  optional here -> image will fill itself according to the available area*/
+}
+
+.card:hover{
+    transform: scale(1.03);    /* card size increases a bit on hover*/
+    filter: drop-shadow(0 0 10px #333);   /* box creates shadow on hovering*/
+    transition: 0.5sec;  /* transition time*/
+}
+
+.card:hover img{
+    filter: grayscale(0%);   /* to bring the color back on hvering image*/
+}
+
+.card figcaption{
+    position: absolute;    /*for overlapping caption on image*/
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;    /* transparency full-> image disappear initailly*/
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(0deg ,rgba(0,0,0,0.5) 0% , rgba(255,255,255,0) 100%);
+    transition: 0.3s;
+}
+
+.card:hover figcaption{
+    opacity: 1;   /*text on images appears on hovering*/
+    transform: scale(1.03);
+}
